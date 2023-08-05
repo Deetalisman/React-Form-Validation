@@ -365,7 +365,7 @@ button {
     width: 100%;
     padding: 0;
     position: relative;
-    background-color: var(--Marineblue);
+    background-color: rgb(213, 246, 236);
     height: 100vh;
   }
   .sidebar {
@@ -402,7 +402,7 @@ button {
     width: 90%;
     margin: 0 5%;
     border-radius: 0.6rem;
-    padding: 3rem 2rem 0;
+    padding: 3rem 2rem;
   }
   .add {
     margin-top: 2rem;
@@ -427,6 +427,10 @@ button {
   }
   .mainbar h1 {
     font-size: 3rem;
+  }
+  #confirm {
+    padding: 0.6rem 1.5rem;
+    font-size: 1.7rem;
   }
 }
 @media screen and (max-width: 500px) {
