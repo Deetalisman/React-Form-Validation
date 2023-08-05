@@ -1,0 +1,455 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 62.4%;
+}
+:root {
+  --white: white;
+  --grey: rgb(210, 207, 207);
+  --Marineblue: hsl(231, 100%, 99%);
+  --blue: hsl(213, 96%, 18%);
+  --Lightgray: hsl(231, 11%, 63%);
+}
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  min-height: 100vh;
+  background-color: var(--Marineblue);
+}
+p {
+  font-size: 2rem;
+}
+.main {
+  background-color: var(--white);
+  width: 90rem;
+  padding: 1rem;
+  border-radius: 0.6rem;
+  display: flex;
+}
+.sidebar {
+  background-image: url(img/bg-sidebar-desktop.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 60rem;
+  width: 40rem;
+  padding: 2rem 2rem;
+  border-radius: 0.6rem;
+}
+.step {
+  margin-top: 3rem;
+  display: flex;
+  color: var(--white);
+}
+.step:first-child {
+  margin-top: 1rem;
+}
+.sub-step {
+  margin-left: 3rem;
+}
+.sub-step p {
+  font-size: 1.8rem;
+}
+.ste {
+  color: var(--grey);
+}
+.num {
+  border: 1px solid var(--white);
+  border-radius: 50%;
+  padding: 0.7rem 1.7rem;
+  cursor: pointer;
+  font-size: 2.6rem;
+}
+.nums {
+  background-color: var(--white);
+  color: var(--Lightgray);
+}
+.mainbar {
+  font-size: 2rem;
+  margin-left: 3rem;
+  padding: 4rem 2rem;
+  width: 100%;
+  color: hsl(228, 33%, 31%);
+}
+.mainbar h1 {
+  font-size: 3.5rem;
+  font-weight: 500;
+}
+
+form {
+  margin-top: 3rem;
+}
+label input {
+  width: 100%;
+  height: 5rem;
+  font-size: 1.7rem;
+  padding-left: 1rem;
+  margin-top: 0.7rem;
+  border-radius: 0.5rem;
+  color: grey;
+  border: 1px solid grey;
+  outline: none;
+}
+label {
+  margin-top: 2rem;
+}
+.label {
+  display: flex;
+  justify-content: space-between;
+}
+.error-msg,
+.error-msg1 {
+  display: none;
+  font-size: 1.7rem;
+}
+.error,
+.error1 {
+  color: red;
+  display: block;
+}
+.err-input,
+.err-input1 {
+  border: 1px solid red;
+}
+.suc-input,
+.suc-input1 {
+  border: 1px solid green;
+}
+
+button {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1.7rem;
+  border: 0;
+  border-radius: 0.6rem;
+  background-color: var(--blue);
+  color: var(--white);
+  cursor: pointer;
+}
+.main-but {
+  float: right;
+}
+#arcade {
+  font-size: 3rem;
+  color: var(--white);
+}
+.adv {
+  background-color: rgb(247, 141, 198);
+}
+.pro {
+  background-color: rgb(157, 157, 248);
+}
+.arc {
+  background-color: rgb(254, 177, 149);
+}
+.main-p {
+  margin-top: 2rem;
+  color: var(--Lightgray);
+}
+.plans {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+}
+.plan {
+  border: 0.3rem solid grey;
+  padding: 1.5rem;
+  width: 32%;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.plan:hover {
+  background-color: var(--Marineblue);
+}
+.plan-img {
+  width: 6rem;
+  padding: 1.4rem;
+  border-radius: 50%;
+}
+.sub-plan1 {
+  margin-top: 5rem;
+  color: black;
+}
+.sub-plan2 {
+  color: var(--Lightgray);
+}
+.mon-year {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  background-color: var(--Marineblue);
+  padding: 1.5rem;
+  border-radius: 0.7rem;
+}
+.mon-year p {
+  font-weight: bold;
+  text-align: center;
+  margin-left: 3rem;
+  cursor: pointer;
+  padding: 0.5rem 1.7rem;
+  border-radius: 0.3rem;
+}
+.mon-year p:hover {
+  color: white;
+  background-color: var(--blue);
+}
+.month {
+  color: white;
+  background-color: var(--blue);
+}
+.hide {
+  display: none;
+}
+.main1-but {
+  float: right;
+}
+.main2-but {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+}
+.main3-but {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4rem;
+}
+.main4-but {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6rem;
+}
+.main2-but1 {
+  background-color: transparent;
+  color: var(--Lightgray);
+  border: 1px solid gray;
+}
+.adds {
+  margin-top: 3rem;
+  color: hsl(228, 33%, 31%);
+}
+.add {
+  display: flex;
+  margin-top: 3rem;
+  border: 3px solid rgb(176, 173, 173);
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+}
+.add-detail {
+  width: 100%;
+  margin-left: 3rem;
+  display: flex;
+  justify-content: space-between;
+}
+.checkbox {
+  width: 2rem;
+}
+.add-detail-h {
+  font-weight: bold;
+  font-size: 2.2rem;
+}
+.add-detail-p {
+  font-size: 1.7rem;
+}
+.finishs {
+  margin-top: 5rem;
+  background-color: var(--Marineblue);
+  padding: 2rem;
+  font-weight: bold;
+}
+.finish:last-child {
+  margin-bottom: 0;
+}
+.finish {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+.finish:hover {
+  border-bottom: 1px solid rgb(196, 194, 194);
+  padding-bottom: 2rem;
+}
+.finish:hover .span {
+  display: block;
+}
+.total {
+  margin-top: 3rem;
+  padding: 0 1rem;
+  color: var(--Lightgray);
+  display: flex;
+  justify-content: space-between;
+}
+.tot-val {
+  font-weight: bold;
+  color: rgb(98, 98, 242);
+  font-size: 2.5rem;
+}
+.span {
+  display: none;
+  cursor: pointer;
+}
+#confirm {
+  background-color: rgb(98, 98, 242);
+  font-size: 2.3rem;
+}
+.last {
+  text-align: center;
+  margin-top: 10rem;
+}
+.last img {
+  width: 10rem;
+  height: 10rem;
+}
+.last h1 {
+  margin-top: 3rem;
+}
+.last p {
+  margin-top: 1rem;
+}
+.sub-plan3 {
+  font-size: 1.7rem;
+}
+.main2-but1:hover {
+  background-color: var(--blue);
+  color: var(--white);
+}
+.main1-but:hover {
+  background-color: transparent;
+  color: var(--Lightgray);
+  border: 1px solid grey;
+}
+@media screen and (max-width: 960px) {
+  .main {
+    width: 90%;
+  }
+  .main4-but {
+    margin-top: 3rem;
+  }
+  .mainbar {
+    margin-left: 2rem;
+  }
+}
+@media screen and (max-width: 850px) {
+  .app {
+    min-height: 0;
+    background-color: var(--Marineblue);
+  }
+  .mainbar {
+    padding: 2rem;
+    margin: 0;
+  }
+  .main {
+    display: block;
+    width: 100%;
+    padding: 0;
+    position: relative;
+    background-color: var(--Marineblue);
+    height: 100vh;
+  }
+  .sidebar {
+    width: 100%;
+    padding: 0;
+    background-image: url(./img/bg-sidebar-mobile.svg);
+    background-position: center;
+    background-size: cover;
+    height: 30rem;
+    display: flex;
+    text-align: center;
+    padding: 4% 30%;
+    justify-content: space-between;
+  }
+
+  .sub-step {
+    display: none;
+  }
+  .num {
+    padding: 1.1rem 2rem;
+    cursor: pointer;
+    font-size: 2.6rem;
+    height: 6rem;
+  }
+  .step:first-child {
+    margin-top: 2.9rem;
+  }
+  .mainbar {
+    position: absolute;
+    top: 18rem;
+    background-color: var(--white);
+    width: 90%;
+    margin: 0 5%;
+    border-radius: 0.6rem;
+  }
+}
+@media screen and (max-width: 710px) {
+  .sidebar {
+    padding: 4% 20%;
+  }
+  .mainbar h1 {
+    font-size: 3rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .sidebar {
+    padding: 4% 15%;
+  }
+  .plans {
+    flex-wrap: wrap;
+  }
+  .plan {
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+  }
+  .sub-plan1 {
+    margin-top: 0;
+    color: hsl(228, 33%, 31%);
+    font-weight: bold;
+  }
+  .plan-img {
+    margin-right: 2rem;
+    height: 6rem;
+  }
+  .add-detail {
+    margin-left: 1rem;
+  }
+  .add-detail-h {
+    font-size: 1.8rem;
+  }
+  .add-detail-p {
+    font-size: 1.5rem;
+  }
+  .main-p {
+    font-size: 1.8rem;
+  }
+  .finishs {
+    margin-top: 2rem;
+  }
+  .tot-val {
+    font-size: 2rem;
+  }
+  button {
+    padding: 0.6rem 1.5rem;
+    font-size: 1.7rem;
+  }
+  .add-detail-p1 {
+    font-size: 1.6rem;
+  }
+  .last {
+    padding: 4rem 2rem;
+  }
+}
