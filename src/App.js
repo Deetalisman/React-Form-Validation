@@ -16,14 +16,19 @@ function Main() {
   const [step3, setStep3] = useState(false);
   const [step4, setStep4] = useState(false);
   const [step, setStep] = useState(false);
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
   const [next, setNext] = useState(false);
+  const [next1, setNext1] = useState(false);
   const [next2, setNext2] = useState(false);
   const [year, setYear] = useState(false);
-  const [packed, setPacked] = useState(true);
+  const [packed, setPacked] = useState(false);
+  const [packed1, setPacked1] = useState(false);
+  const [packed2, setPacked2] = useState(false);
+  const [arcade, setArcade] = useState(false);
+  const [advance, setAdvance] = useState(false);
+  const [pro, setPro] = useState(false);
 
   function handleName(e) {
     setName(e.target.value);
@@ -37,8 +42,16 @@ function Main() {
     setNumber(e.target.value);
     console.log(number);
   }
-  function handlePacked() {
+  function handlePacked(e) {
     setPacked((packed) => !packed);
+    console.log(packed);
+  }
+  function handlePacked1(e) {
+    setPacked1((packed1) => !packed1);
+    console.log(packed);
+  }
+  function handlePacked2(e) {
+    setPacked2((packed2) => !packed2);
     console.log(packed);
   }
   function handleStep() {
@@ -55,10 +68,25 @@ function Main() {
     setStep3(false);
     setStep4(false);
   }
+  function handleStep21() {
+    setStep(false);
+    setStep1(false);
+    setStep2(false);
+    setStep3(true);
+    setStep4(false);
+  }
+  function handleStep31() {
+    setStep(false);
+    setStep1(false);
+    setStep2(false);
+    setStep3(false);
+    setStep4(true);
+  }
   function handleStep1(e) {
     e.preventDefault();
     setStep(false);
     setNext(true);
+    setNext1(true);
     setNext2(true);
     console.log(next);
     console.log(name);
@@ -74,18 +102,26 @@ function Main() {
     }
   }
   function handleStep2() {
-    setStep1(false);
-    setStep2(false);
-    setStep3(true);
-    setStep4(false);
-    setStep(false);
+    if (arcade || advance || pro) {
+      setStep1(false);
+      setStep2(false);
+      setStep3(true);
+      setStep4(false);
+      setStep(false);
+    } else {
+      setStep2(true);
+    }
   }
   function handleStep3() {
-    setStep1(false);
-    setStep2(false);
-    setStep3(false);
-    setStep4(true);
-    setStep(false);
+    if (packed || packed || packed2) {
+      setStep1(false);
+      setStep2(false);
+      setStep3(false);
+      setStep4(true);
+      setStep(false);
+    } else {
+      setStep3(true);
+    }
   }
   function handleGoStep1() {
     setStep1(true);
@@ -114,10 +150,9 @@ function Main() {
         step2={step2}
         step3={step3}
         step4={step4}
-        handleStep1={handleStep1}
         handleStep11={handleStep11}
-        handleStep2={handleStep2}
-        handleStep3={handleStep3}
+        handleStep21={handleStep21}
+        handleStep31={handleStep31}
         handleStep={handleStep}
       />
       {step1 && (
@@ -126,10 +161,13 @@ function Main() {
           step1={step1}
           step2={step2}
           name={name}
+          email={email}
+          number={number}
           handleName={handleName}
           handleEmail={handleEmail}
           handleNumber={handleNumber}
           next={next}
+          next1={next1}
           next2={next2}
         />
       )}
@@ -139,6 +177,12 @@ function Main() {
           handleStep2={handleStep2}
           year={year}
           setYear={setYear}
+          arcade={arcade}
+          advance={advance}
+          pro={pro}
+          setArcade={setArcade}
+          setAdvance={setAdvance}
+          setPro={setPro}
         />
       )}
       {step3 && (
@@ -147,10 +191,19 @@ function Main() {
           handleStep3={handleStep3}
           packed={packed}
           handlePacked={handlePacked}
+          packed1={packed1}
+          handlePacked1={handlePacked1}
+          packed2={packed2}
+          handlePacked2={handlePacked2}
+          year={year}
         />
       )}
       {step4 && (
-        <Mainbar4 handleGoStep3={handleGoStep3} handleConfirm={handleConfirm} />
+        <Mainbar4
+          handleGoStep3={handleGoStep3}
+          handleConfirm={handleConfirm}
+          year={year}
+        />
       )}
       {step && <Thankyou />}
     </div>
@@ -162,10 +215,9 @@ function Sidebar({
   step2,
   step3,
   step4,
-  handleStep1,
   handleStep11,
-  handleStep2,
-  handleStep3,
+  handleStep21,
+  handleStep31,
   handleStep,
 }) {
   return (
@@ -189,7 +241,7 @@ function Sidebar({
         </div>
       </div>{" "}
       <div className="step">
-        <p className={"num " + (step3 && "nums")} onClick={handleStep2}>
+        <p className={"num " + (step3 && "nums")} onClick={handleStep21}>
           3
         </p>
         <div className="sub-step">
@@ -198,7 +250,7 @@ function Sidebar({
         </div>
       </div>
       <div className="step">
-        <p className={"num " + (step4 && "nums")} onClick={handleStep3}>
+        <p className={"num " + (step4 && "nums")} onClick={handleStep31}>
           4
         </p>
         <div className="sub-step">
@@ -234,17 +286,16 @@ function Mainbar1({
           <div className="label">
             {" "}
             <p>Name</p>
-            <p className={"error-msg " + (next1 && email === "" && "error")}>
+            <p className={"error-msg " + (next1 && name === "" && "error")}>
               Field is required
             </p>
           </div>
           <input
             type="text"
             placeholder="e.g. Stephen King"
-            id="name"
             value={name}
             onChange={handleName}
-            className={next1 && email === "" ? "err-input" : "suc-input"}
+            className={next1 && name === "" ? "err-input" : "suc-input"}
           />
         </label>
         <br></br>
@@ -254,17 +305,16 @@ function Mainbar1({
           <div className="label">
             {" "}
             <p>Email Address</p>
-            <p className={"error-msg1 " + (next && name === "" && "error1")}>
+            <p className={"error-msg " + (next && email === "" && "error")}>
               Field is required
             </p>
           </div>
           <input
             type="text"
             placeholder="e.g. StephenKing@lorem.com"
-            id="email"
             value={email}
             onChange={handleEmail}
-            className={next && name === "" ? "err-input1" : "suc-input1"}
+            className={next && email === "" ? "err-input" : "suc-input"}
           />
         </label>
         <br></br>
@@ -275,17 +325,16 @@ function Mainbar1({
           <div className="label">
             {" "}
             <p>Phone Number </p>
-            <p className={"error-msg1 " + (next2 && email === "" && "error1")}>
+            <p className={"error-msg " + (next2 && number === "" && "error")}>
               Field is required
             </p>
           </div>
           <input
             type="text"
             placeholder="e.g. +1 234 567 890"
-            id="number"
             value={number}
             onChange={handleNumber}
-            className={next2 && email === "" ? "err-input1" : "suc-input1"}
+            className={next2 && number === "" ? "err-input" : "suc-input"}
           />
         </label>
         <br></br>
@@ -295,13 +344,27 @@ function Mainbar1({
   );
 }
 
-function Mainbar2({ handleGoStep1, handleStep2, year, setYear }) {
+function Mainbar2({
+  handleGoStep1,
+  handleStep2,
+  year,
+  setYear,
+  arcade,
+  setArcade,
+  advance,
+  setAdvance,
+  pro,
+  setPro,
+}) {
   return (
     <div className="mainbar">
       <h1>Select Your Plan</h1>
       <p className="main-p">You have the option of monthly or yearly billing</p>
       <div className="plans">
-        <div className="plan">
+        <div
+          className={"plan " + (arcade && "add-active")}
+          onClick={() => setArcade((arcade) => !arcade)}
+        >
           <div className="plan-img arc">
             <FaKeycdn id="arcade" />
           </div>
@@ -311,7 +374,10 @@ function Mainbar2({ handleGoStep1, handleStep2, year, setYear }) {
             {year && <p className="sub-plan3">2 months free</p>}
           </div>
         </div>
-        <div className="plan">
+        <div
+          className={"plan " + (advance && "add-active")}
+          onClick={() => setAdvance((advance) => !advance)}
+        >
           <div className="plan-img adv">
             <FaBandAid id="arcade" />
           </div>
@@ -321,7 +387,10 @@ function Mainbar2({ handleGoStep1, handleStep2, year, setYear }) {
             {year && <p className="sub-plan3">2 months free</p>}
           </div>
         </div>
-        <div className="plan">
+        <div
+          className={"plan " + (pro && "add-active")}
+          onClick={() => setPro((pro) => !pro)}
+        >
           <div className="plan-img pro">
             <FaTorah id="arcade" />
           </div>
@@ -352,13 +421,23 @@ function Mainbar2({ handleGoStep1, handleStep2, year, setYear }) {
   );
 }
 
-function Mainbar3({ handleGoStep2, handleStep3, packed, handlePacked }) {
+function Mainbar3({
+  handleGoStep2,
+  handleStep3,
+  packed,
+  handlePacked,
+  packed1,
+  packed2,
+  handlePacked1,
+  handlePacked2,
+  year,
+}) {
   return (
     <div className="mainbar">
       <h1>Pick add-ons</h1>
       <p className="main-p">Add-ons help enhance your gaming experience</p>
       <div className="adds">
-        <div className="add">
+        <div className={"add " + (packed && "add-active")}>
           <input
             type="checkbox"
             className="checkbox"
@@ -370,27 +449,37 @@ function Mainbar3({ handleGoStep2, handleStep3, packed, handlePacked }) {
               <p className="add-detail-h">Online Service</p>
               <p className="add-detail-p ">Access to multiplayer games</p>
             </div>
-            <p className="add-detail-p1">+$1/mo</p>
+            <p className="add-detail-p1">{year ? "+$10/yr" : "+$1/mo"}</p>
           </div>
         </div>
-        <div className="add">
-          <input type="checkbox" className="checkbox" />
+        <div className={"add " + (packed1 && "add-active")}>
+          <input
+            type="checkbox"
+            className="checkbox"
+            value={packed1}
+            onChange={handlePacked1}
+          />
           <div className="add-detail">
             <div>
               <p className="add-detail-h">Large storage</p>
               <p className="add-detail-p">Extra 1TB of cloud save</p>
             </div>
-            <p className="add-detail-p1">+$2/mo</p>
+            <p className="add-detail-p1">{year ? "+$20/yr" : "+$2/mo"}</p>
           </div>
         </div>
-        <div className="add">
-          <input type="checkbox" className="checkbox" />
+        <div className={"add " + (packed2 && "add-active")}>
+          <input
+            type="checkbox"
+            className="checkbox"
+            value={packed2}
+            onChange={handlePacked2}
+          />
           <div className="add-detail">
             <div>
               <p className="add-detail-h">Customize Profile</p>
               <p className="add-detail-p">Custom theme on your profile</p>
             </div>
-            <p className="add-detail-p1">+$2/mo</p>
+            <p className="add-detail-p1">{year ? "+$20/yr" : "+$2/mo"}</p>
           </div>
         </div>
       </div>
@@ -406,7 +495,7 @@ function Mainbar3({ handleGoStep2, handleStep3, packed, handlePacked }) {
   );
 }
 
-function Mainbar4({ handleGoStep3, handleConfirm }) {
+function Mainbar4({ handleGoStep3, handleConfirm, year }) {
   return (
     <div className="mainbar">
       <h1>Finishing Up</h1>
@@ -419,26 +508,26 @@ function Mainbar4({ handleGoStep3, handleConfirm }) {
             Arcade(monthly) <br></br>
             <span className="span">change</span>
           </p>
-          <p>$9/mo</p>
+          <p>{year ? "$90/yr" : "$9/mo"}</p>
         </div>
         <div className="finish">
           <p>
             Online service<br></br>
             <span className="span">change</span>
           </p>
-          <p>$1/mo</p>
+          <p>{year ? "$10/yr" : "$1/mo"}</p>
         </div>
         <div className="finish">
           <p>
             Larger storage<br></br>
             <span className="span">change</span>
           </p>
-          <p>$2/mo</p>
+          <p>{year ? "$20/yr" : "$2/mo"}</p>
         </div>
       </div>
       <div className="total">
         <p>Total (per month)</p>
-        <p className="tot-val">+$12/mo</p>
+        <p className="tot-val">{year ? "$120/yr" : "$12/mo"}</p>
       </div>
       <div className="main4-but">
         <button className="main2-but1" onClick={handleGoStep3}>

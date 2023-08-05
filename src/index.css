@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: "Noto Sans", sans-serif;
+  font-family: "Rubik", sans-serif;
+  font-family: "Titillium Web", sans-serif;
 }
 
 code {
@@ -113,22 +116,18 @@ label {
   display: flex;
   justify-content: space-between;
 }
-.error-msg,
-.error-msg1 {
+.error-msg {
   display: none;
   font-size: 1.7rem;
 }
-.error,
-.error1 {
+.error {
   color: red;
   display: block;
 }
-.err-input,
-.err-input1 {
+.err-input {
   border: 1px solid red;
 }
-.suc-input,
-.suc-input1 {
+.suc-input {
   border: 1px solid green;
 }
 
@@ -168,7 +167,7 @@ button {
   margin-top: 3rem;
 }
 .plan {
-  border: 0.3rem solid grey;
+  border: 0.3rem solid rgb(191, 189, 189);
   padding: 1.5rem;
   width: 32%;
   border-radius: 0.5rem;
@@ -250,6 +249,10 @@ button {
   padding: 1rem 1.5rem;
   border-radius: 0.5rem;
 }
+.add-active {
+  background-color: var(--Marineblue);
+  border: 3px solid hsl(228, 33%, 31%);
+}
 .add-detail {
   width: 100%;
   margin-left: 3rem;
@@ -265,6 +268,10 @@ button {
 }
 .add-detail-p {
   font-size: 1.7rem;
+}
+.add-detail-p1 {
+  color: rgb(98, 98, 242);
+  margin-top: 0.7rem;
 }
 .finishs {
   margin-top: 5rem;
@@ -373,12 +380,14 @@ button {
     padding: 4% 30%;
     justify-content: space-between;
   }
-
+  .error-msg {
+    font-size: 1.5rem;
+  }
   .sub-step {
     display: none;
   }
   .num {
-    padding: 1.1rem 2rem;
+    padding: 1.3rem 2rem;
     cursor: pointer;
     font-size: 2.6rem;
     height: 6rem;
@@ -393,6 +402,23 @@ button {
     width: 90%;
     margin: 0 5%;
     border-radius: 0.6rem;
+    padding: 3rem 2rem 0;
+  }
+  .add {
+    margin-top: 2rem;
+  }
+  .add-detail-p {
+    margin-top: 0.4rem;
+  }
+  .sub-plan2 {
+    margin-top: 0.6rem;
+    font-size: 1.5rem;
+  }
+  .sub-plan {
+    display: flex;
+  }
+  #arcade {
+    font-size: 2.5rem;
   }
 }
 @media screen and (max-width: 710px) {
@@ -414,15 +440,19 @@ button {
     width: 100%;
     margin-bottom: 1rem;
     display: flex;
+    padding: 1rem;
   }
   .sub-plan1 {
     margin-top: 0;
     color: hsl(228, 33%, 31%);
     font-weight: bold;
+    font-size: 1.8rem;
   }
   .plan-img {
     margin-right: 2rem;
-    height: 6rem;
+    height: 4rem;
+    padding: 0.8rem 0.8rem;
+    width: 4.2rem;
   }
   .add-detail {
     margin-left: 1rem;
@@ -431,7 +461,7 @@ button {
     font-size: 1.8rem;
   }
   .add-detail-p {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
   .main-p {
     font-size: 1.8rem;
